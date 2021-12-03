@@ -16,7 +16,10 @@ router.post('/signin', (req, res) => {
   User.findOne({email: req.body.email})
   .then(async user => {
      // account doesn't exist
-     if(user == null) return res.status(400).json({message: 'No account found'})     
+     if(user == null) return res.status(400).json({
+       message: 'No account found',
+       error: 'error'
+      })     
      // user exists, now check password
      if( Utils.verifyHash(req.body.password, user.password) ){
         // credentials match - create JWT token
@@ -58,7 +61,8 @@ router.get('/validate', (req, res) => {
     if(err){
       console.log(err)
       return res.status(401).json({
-        message: "Unauthorised"
+        message: "Unauthorised",
+        error: "error"
       })
     }
 
