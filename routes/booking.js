@@ -13,7 +13,10 @@ router.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 router.post('/newbooking', Utils.authenticateToken, (req, res) => {
     // validate request
     if (Object.keys(req.body).length != 6) {
-        return res.status(400).send({ message: "User content can not be empty" })
+        return res.status(400).json({ 
+            message: "User content can not be empty",
+            error: "error"
+        })
     }
 
     // this is how to get current universal timestamp
@@ -24,7 +27,7 @@ router.post('/newbooking', Utils.authenticateToken, (req, res) => {
 
     if (serverTime > parseInt(req.body.startTime)) {
         return res.status(406).json({
-            message: "Start Time Not Valid",
+            message: "Session Data Not Valid",
             error: "error"
         })
     }
