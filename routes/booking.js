@@ -24,7 +24,8 @@ router.post('/newbooking', Utils.authenticateToken, (req, res) => {
 
     if (serverTime > parseInt(req.body.startTime)) {
         return res.status(406).json({
-            message: "Start Time Not Valid"
+            message: "Start Time Not Valid",
+            error: "error"
         })
     }
 
