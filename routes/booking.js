@@ -12,7 +12,7 @@ router.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // POST - create new bookings --------------------------------------
 router.post('/newbooking', Utils.authenticateToken, (req, res) => {
     // validate request
-    if (Object.keys(req.body).length === 0) {
+    if (Object.keys(req.body).length != 6) {
         return res.status(400).send({ message: "User content can not be empty" })
     }
 
