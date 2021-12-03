@@ -34,6 +34,7 @@ router.post('/signin', (req, res) => {
      }else{
         // Password didn't match!
         return res.status(400).json({
+          error: "error",
            message: "Password / Email incorrect"
         })        
      }
