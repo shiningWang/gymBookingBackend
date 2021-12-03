@@ -27,7 +27,7 @@ router.post('/newbooking', Utils.authenticateToken, (req, res) => {
 
     if (serverTime > parseInt(req.body.startTime)) {
         return res.status(406).json({
-            message: "Session Data Not Valid",
+            message: "Session Date Time Data Invalid",
             error: "error"
         })
     }
